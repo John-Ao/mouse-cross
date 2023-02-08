@@ -21,11 +21,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QLabel *label_1;
-    QLabel *label_2;
-    QLabel *label_3;
-    QLabel *label_4;
-    QLabel *label_5;
+    QLabel *label;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -34,38 +30,9 @@ public:
         MainWindow->resize(30, 30);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        label_1 = new QLabel(centralwidget);
-        label_1->setObjectName(QString::fromUtf8("label_1"));
-        label_1->setGeometry(QRect(-1, -1, 30, 30));
-        QFont font;
-        font.setFamily(QString::fromUtf8("\347\255\211\347\272\277"));
-        font.setPointSize(28);
-        label_1->setFont(font);
-        label_1->setAlignment(Qt::AlignCenter);
-        label_2 = new QLabel(centralwidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(-1, 1, 30, 30));
-        label_2->setFont(font);
-        label_2->setStyleSheet(QString::fromUtf8(""));
-        label_2->setAlignment(Qt::AlignCenter);
-        label_3 = new QLabel(centralwidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(1, -1, 30, 30));
-        label_3->setFont(font);
-        label_3->setStyleSheet(QString::fromUtf8(""));
-        label_3->setAlignment(Qt::AlignCenter);
-        label_4 = new QLabel(centralwidget);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(1, 1, 30, 30));
-        label_4->setFont(font);
-        label_4->setStyleSheet(QString::fromUtf8(""));
-        label_4->setAlignment(Qt::AlignCenter);
-        label_5 = new QLabel(centralwidget);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(0, 0, 30, 30));
-        label_5->setFont(font);
-        label_5->setStyleSheet(QString::fromUtf8("QLabel {color: white;}"));
-        label_5->setAlignment(Qt::AlignCenter);
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(0, 0, 30, 30));
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -75,12 +42,8 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        label_1->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
-        label_4->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
+        MainWindow->setWindowTitle(QString());
+        label->setText(QString());
     } // retranslateUi
 
 };

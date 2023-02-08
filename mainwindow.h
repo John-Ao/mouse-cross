@@ -1,6 +1,5 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include <Windows.h>
 
 #include <QMainWindow>
 
@@ -14,11 +13,8 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
    public:
+    Ui::MainWindow *ui;
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
-   private:
-    Ui::MainWindow *ui;
-    HHOOK hook = nullptr;
 };
 #endif  // MAINWINDOW_H
