@@ -2,6 +2,7 @@
 
 #include <QImage>
 #include <QPixmap>
+#include <QProcess>
 
 #include "ui_mainwindow.h"
 
@@ -12,6 +13,11 @@ int scale(T x) {
     return (int)x * 96 / dpi;
 }
 
+void restart() {
+    QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
+    qApp->quit();
+}
+
 void MainWindow::drawCursor() {
     // 获取鼠标信息
     int cur_w, cur_h, cur_x, cur_y, cur_ox, cur_oy;
@@ -19,15 +25,18 @@ void MainWindow::drawCursor() {
     cur_h = GetSystemMetrics(SM_CYCURSOR);
     if (!cur_w || !cur_h) {
         qDebug() << "Failed to get cursor size\n";
+        restart();
         return;
     }
     cur_info = {sizeof(CURSORINFO), 0, 0, 0};
     if (!GetCursorInfo(&cur_info)) {
         qDebug() << "Failed to get cursor info\n";
+        restart();
         return;
     }
     if (!GetIconInfo(cur_info.hCursor, &icon_info)) {
         qDebug() << "Failed to get icon info\n";
+        restart();
         return;
     }
     // 坑：需要释放资源
