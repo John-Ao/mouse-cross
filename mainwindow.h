@@ -21,6 +21,7 @@ class MainWindow : public QMainWindow {
     HDC hdcScreen, hdcMem;
     HBITMAP hbmCanvas;
     HGDIOBJ hbmOld;
+    HBRUSH brush;
     CURSORINFO cur_info;
     ICONINFO icon_info;
 

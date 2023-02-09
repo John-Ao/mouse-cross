@@ -28,7 +28,7 @@ void MainWindow::drawCursor() {
         restart();
         return;
     }
-    cur_info = {sizeof(CURSORINFO), 0, 0, 0};
+    cur_info.cbSize = sizeof(CURSORINFO);
     if (!GetCursorInfo(&cur_info)) {
         qDebug() << "Failed to get cursor info\n";
         restart();
@@ -53,7 +53,7 @@ void MainWindow::drawCursor() {
 
     // 填充纯色底色
     RECT rect = {0, 0, cur_w, cur_h};
-    FillRect(hdcMem, &rect, CreateSolidBrush(0x0000FF00));
+    FillRect(hdcMem, &rect, brush);
     DrawIcon(hdcMem, 0, 0, cur_info.hCursor);
 
     // 将底色替换为透明
@@ -93,6 +93,7 @@ MainWindow::MainWindow(QWidget* parent)
     hdcMem = CreateCompatibleDC(hdcScreen);
     hbmCanvas = CreateCompatibleBitmap(hdcScreen, 60, 60);  // Create the bitmap to use as a canvas.
     hbmOld = SelectObject(hdcMem, hbmCanvas);               // Select the bitmap into the device context.
+    brush = CreateSolidBrush(0x0000FF00);
 
     auto timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::drawCursor);
@@ -103,6 +104,7 @@ MainWindow::~MainWindow() {
     timer->stop();
     SelectObject(hdcMem, hbmOld);
     DeleteObject(hbmCanvas);
+    DeleteObject(brush);
     DeleteDC(hdcMem);
     ReleaseDC(NULL, hdcScreen);
     delete ui;
