@@ -27,12 +27,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(30, 30);
+        MainWindow->resize(32, 32);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(0, 0, 30, 30));
+        label->setGeometry(QRect(0, 0, 32, 32));
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);

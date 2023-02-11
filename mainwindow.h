@@ -17,15 +17,17 @@ class MainWindow : public QMainWindow {
 
    public:
     Ui::MainWindow *ui;
-    QTimer *timer;
+    QTimer *timerPos, *timerIcon;
     HDC hdcScreen, hdcMem;
     HBITMAP hbmCanvas;
     HGDIOBJ hbmOld;
     HBRUSH brush;
     CURSORINFO cur_info;
     ICONINFO icon_info;
+    int cur_x, cur_y, cur_ox = 32, cur_oy = 32;
 
-    void drawCursor();
+    void updatePos();
+    void updateIcon();
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 };
